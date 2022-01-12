@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Pliki zasobów\Textures">
+      <UniqueIdentifier>{5ad3038b-04ab-4cf9-b016-477a0c2a1c28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki zasobów\Shaders">
+      <UniqueIdentifier>{4bd20641-4b95-44a0-afd8-3b92c1fa415e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c">
@@ -21,5 +27,62 @@
     <ClCompile Include="main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="stb.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="shaderClass.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="VBO.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="VAO.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="EBO.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Desktop\stone.jpg">
+      <Filter>Pliki zasobów\Textures</Filter>
+    </Image>
+    <Image Include="..\opengl-tutorials\Resources\YoutubeOpenGL 6 - Textures\pop_cat.png">
+      <Filter>Pliki zasobów\Textures</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\brick.png">
+      <Filter>Pliki zasobów\Textures</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\container.jpg">
+      <Filter>Pliki zasobów\Textures</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\pepedes.png">
+      <Filter>Pliki zasobów\Textures</Filter>
+    </Image>
+    <Image Include="D:\Studia 2021\RW\victor-totorials\OpenglCamera\OpenglCamera\pepe.png">
+      <Filter>Pliki zasobów\Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.vert">
+      <Filter>Pliki zasobów\Shaders</Filter>
+    </None>
+    <None Include="default.frag">
+      <Filter>Pliki zasobów\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="shaderClass.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="VBO.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="VAO.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="EBO.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
