@@ -16,6 +16,14 @@ GLfloat wierzcholki[] =
 	 -0.5f - S, -H / 2 + C, -0.5f,		//E - 5
 };
 
+GLfloat kwadrat[] =
+{						//textury wierzcholki
+	 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left 
+};
+
 GLuint indices[] =			//kolejnosc wierzcholkow
 {
 	1,2,0,
@@ -23,6 +31,12 @@ GLuint indices[] =			//kolejnosc wierzcholkow
 	3,4,0,
 	4,5,0,
 	5,1,0,
+};
+
+GLuint indicies_sq[] =
+{
+	0,1,3,
+	1,2,3
 };
 
 // Vertex Shader source code
@@ -88,12 +102,23 @@ int main() {
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);	//bindujemy - pewien object staje sie zbindowany(current object)  kiedy odp funkcje modyfikujaca ten typ obiektu to modyfikujemy nasz obiekt
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO); //bindujemy EBO
 
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);	//wsadzamy tab indices do naszego EBO
-	glBufferData(GL_ARRAY_BUFFER, sizeof(wierzcholki), wierzcholki, GL_STATIC_DRAW);	//wsadzamy nasza tablice do buffera - tablica wiec mielysmy array buffer
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);		//konf vertex atribute zeby opengl wiedzial jak czytac VBO
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicies_sq), indicies_sq, GL_STATIC_DRAW);	//wsadzamy tab indices do naszego EBO
+	glBufferData(GL_ARRAY_BUFFER, sizeof(kwadrat), kwadrat, GL_STATIC_DRAW);	//wsadzamy nasza tablice do buffera - tablica wiec mielysmy array buffer
+	/*
+	
+	glVertexAttribPointer(0, 5, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);		//konf vertex atribute zeby opengl wiedzial jak czytac VBO
 																						//0 -poczakowy atrybut, 3- mamy 3 floaty w verteksie, typ wartosci; mamy 3 floaty wiec 3 *float
 																						//(void*)0 - offset - gdzie nasze wierzcholki sie zaczynaja w array?
 	glEnableVertexAttribArray(0);	//pozwolenie dla open gl 0 -pozycja vertex atrrib 
+	*/
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	// color attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+	// texture coord attribute
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);	//bindowanie VAO i VBO do 0 aby ich przypadkiem nie zmodyfikowaæ
 	glBindVertexArray(0);
@@ -107,7 +132,7 @@ int main() {
 		glUseProgram(shaderProgram);			//mowimy opengl ktorego shader programu uzyc - mozna roznycch?
 		glBindVertexArray(VAO);					//bindujemy VAO
 		
-		glDrawElements(GL_TRIANGLES, 15, GL_UNSIGNED_INT, 0);	//15 - ile elemetow tablicy indices, 0-indeks indices
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//15 - ile elemetow tablicy indices, 0-indeks indices
 		//glDrawArrays(GL_TRIANGLES, 0, 3);		//rusujemy uzywajac prymitywow
 
 		glfwSwapBuffers(window);					//zamiana buffera - tak
