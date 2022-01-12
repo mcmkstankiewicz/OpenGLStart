@@ -114,8 +114,10 @@ int main() {
 		glfwPollEvents();	// Bez tego kno nie odpowiada
 	}
 	
+	
 	glDeleteVertexArrays(1, &VAO);	//usuwanie VAO,VBO i shaderProgramu
 	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
 	glDeleteProgram(shaderProgram);
 
 	glfwDestroyWindow(window); //USUNIECIE OKNA
