@@ -171,8 +171,11 @@
   <ItemGroup>
     <None Include="default.frag" />
     <None Include="default.vert" />
+    <None Include="defaultTex.frag" />
+    <None Include="defaultTex.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\AppData\Local\Temp\Rar$DRa23284.28646\linmath.h-master\linmath.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="EBO.h" />
     <ClInclude Include="shaderClass.h" />

@@ -29,6 +29,10 @@ void Camera::Matrix(float FOVdeg, float nearPlane, float farPlane, Shader& shade
 void Camera::Inputs(GLFWwindow* window)
 {
 	// Handles key inputs
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, GLFW_TRUE);
+	}
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
 		Position += speed * Orientation;

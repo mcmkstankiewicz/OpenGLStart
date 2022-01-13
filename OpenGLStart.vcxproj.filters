@@ -67,10 +67,16 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="default.vert">
+    <None Include="defaultTex.vert">
+      <Filter>Pliki zasobów\Shaders</Filter>
+    </None>
+    <None Include="defaultTex.frag">
       <Filter>Pliki zasobów\Shaders</Filter>
     </None>
     <None Include="default.frag">
+      <Filter>Pliki zasobów\Shaders</Filter>
+    </None>
+    <None Include="default.vert">
       <Filter>Pliki zasobów\Shaders</Filter>
     </None>
   </ItemGroup>
@@ -88,6 +94,9 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\AppData\Local\Temp\Rar$DRa23284.28646\linmath.h-master\linmath.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
