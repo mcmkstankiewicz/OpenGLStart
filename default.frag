@@ -1,6 +1,7 @@
 #version 330 core
 
 out vec4 FragColor; // Outputs colors in RGBA
+
 in vec3 color;	// Inputs the color from the Vertex Shader
 in vec2 texCoord;	// Inputs the texture coordinates from the Vertex Shader
 

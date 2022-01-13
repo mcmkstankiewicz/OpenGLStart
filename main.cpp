@@ -127,11 +127,11 @@ int main() {
 	shaderProgram.Activate();			//mowimy opengl ktorego shader programu uzyc - mozna roznycch?
 	glUniform1i(tex0Uni, 0);
 
-	float rotation = 0.0f;		//do rotacji
-	double prevTime = glfwGetTime();
+	
 
 	glEnable(GL_DEPTH_TEST);		//glebia - potrzebna do 3d
 
+	Camera camera(WINDOW_W, WINDOW_H, glm::vec3(0.0f, 0.0f, 2.0f));		//obiekt kamery
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -140,27 +140,10 @@ int main() {
 		
 		shaderProgram.Activate();		//shader musi byc aktywowany przed matprzypisyawniem do matryc
 		
-		double crntTime = glfwGetTime();
-		if (crntTime - prevTime >= 1 / 60)
-		{
-			rotation += 0.1f;		//wolniej/szybciej
-			prevTime = crntTime;
-		}
+		camera.Inputs(window);
+		// Updates and exports the camera matrix to the Vertex Shader
+		camera.Matrix(45.0f, 0.1f, 100.0f, shaderProgram, "camMatrix");
 
-		glm::mat4 model = glm::mat4(1.0f);		//inicjalizacja model matrix
-		glm::mat4 view = glm::mat4(1.0f);		//inicjalizacja view matrix
-		glm::mat4 proj = glm::mat4(1.0f);		//inicjalizacja projection matrix
-
-		model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
-		view = glm::translate(view, glm::vec3(0.0f, -0.5f, -2.0f));		//ustawienie widou przesuwamyu 0.5 w dol i 2 od siebie 
-		proj = glm::perspective(glm::radians(45.0f), (float)(800/800), 0.1f, 100.0f);	//ustawienie perspektywy 
-
-		int modelLoc = glGetUniformLocation(shaderProgram.ID, "model");
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		int viewLoc = glGetUniformLocation(shaderProgram.ID, "view");
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-		int projLoc = glGetUniformLocation(shaderProgram.ID, "proj");
-		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(proj));
 
 		glUniform1f(uniID, 0.5f);
 		glBindTexture(GL_TEXTURE_2D, texture);	//bindujemy teksture
